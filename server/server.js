@@ -9,9 +9,12 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors({
   origin: '*',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false
 }));
+
+app.options('*', cors());
 
 app.use(express.json({ limit: '10mb' }));
 
